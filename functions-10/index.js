@@ -7,9 +7,9 @@
 //   numPassengers = 1,
 //   price = 199 * numPassengers
 // ) {
-//   // ES5
-//   //   numPassengers = numPassengers || 1;
-//   //   price = price || 199;
+// ES5
+//   numPassengers = numPassengers || 1;
+//   price = price || 199;
 
 //   const booking = {
 //     flightNum,
@@ -28,30 +28,62 @@
 
 //----------------- PART 2
 
-const flight = "LH234";
-const jonas = {
-  name: "Eldar Idrizovic",
-  passport: 123456798765,
-};
+// const flight = "LH234";
+// const jonas = {
+//   name: "Eldar Idrizovic",
+//   passport: 123456798765,
+// };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = "LH999";
-  passenger.name = "Mr, " + passenger.name;
+// const checkIn = function (flightNum, passenger) {
+//   flightNum = "LH999";
+//   passenger.name = "Mr, " + passenger.name;
 
-  if (passenger.passport === 123456798765) {
-    alert("Check in");
-  } else {
-    alert("wrong passport!!!");
-  }
-};
+//   if (passenger.passport === 123456798765) {
+//     alert("Check in");
+//   } else {
+//     alert("wrong passport!!!");
+//   }
+// };
 
 // checkIn(flight, jonas);
 // console.log(flight);
 // console.log(jonas);
 
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 100000000000);
+// const newPassport = function (person) {
+//   person.passport = Math.trunc(Math.random() * 100000000000);
+// };
+
+// newPassport(jonas);
+// checkIn(flight, jonas);
+
+// Functions accepting CALLBACK FUNCTIONS
+
+const oneWord = function (str) {
+  return str.replace(/ /g, "").toLowerCase();
 };
 
-newPassport(jonas);
-checkIn(flight, jonas);
+const upperFirstWord = function (str) {
+  const [first, ...others] = str.split(" ");
+  return [first.toUpperCase(), ...others].join(" ");
+};
+
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Orginal string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
+
+  console.log(`Transformed by: ${fn.name}`);
+};
+
+transformer("JavaScript is the best!", upperFirstWord);
+
+transformer("JavaScript is the best!", oneWord);
+
+// JS uses callbacks all the time
+const high5 = function () {
+  console.log("👋");
+};
+document.body.addEventListener("click", high5);
+["Jonas", "Marta", "Adam"].forEach(high5);
+
+// #next 007
