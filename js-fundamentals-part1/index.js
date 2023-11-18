@@ -4,7 +4,6 @@ console.log(23);
 
 let firstName = "Eldar"
 
-
 console.log(firstName);
 console.log(firstName);
 console.log(firstName);
@@ -35,18 +34,12 @@ year = 1991;
 console.log(typeof null)
 */
 
-
-
 // LET, CONST and VAR -----
-
-
 
 // let age = 30;
 // age = 31;
 
 // const birthYear = 1991;
-
-   
 
 // const now = 2037;
 
@@ -87,9 +80,7 @@ console.log(typeof null)
 //     console.log('Mark ima manji bmi');
 // }
 
-
 // STRING --------------
-
 
 // const firstName = 'Jonas';
 // const job = 'teacher';
@@ -106,9 +97,8 @@ console.log(typeof null)
 
 // console.log('ovo je proba \n\ da li radi');
 
-// console.log(`ovo je proba2 
+// console.log(`ovo je proba2
 // da li radi`);
-
 
 // const age = 15;
 
@@ -139,7 +129,6 @@ console.log(typeof null)
 
 // const bmiMark = massMark / (heighMark * heighMark);
 
-
 // const bmiJohn = massJohn / (heighJohn * heighJohn);
 
 // const markHigherBMI = bmiMark > bmiJohn;
@@ -152,9 +141,8 @@ console.log(typeof null)
 //     console.log(`John's BMI (${bmiJohn}) is higher than Mark's BMI (${bmiMark}) `);
 // }
 
-
 // // type conversion
-//  const inputYear = '1991';  
+//  const inputYear = '1991';
 //  console.log(Number(inputYear), inputYear);
 //  console.log(Number(inputYear) + 18);
 
@@ -164,7 +152,7 @@ console.log(typeof null)
 //  console.log(String(23), 23);
 
 //  //type coercion
- 
+
 //  console.log('I am ' + 23 + ' years old.');
 //  console.log('23' - '10' - 3);
 //  console.log('23' * '2');
@@ -173,7 +161,6 @@ console.log(typeof null)
 //  n = n - 1;
 
 //  console.log(n);
-
 
 // console.log(Boolean(0));
 // console.log(Boolean(undefined));
@@ -188,14 +175,12 @@ console.log(typeof null)
 //     console.log('You should get a job');
 // }
 
-
 // let height;
 // if(height) {
 //     console.log('YAy.Height is defined');
 // } else {
 //     console.log('Height is undefined');
 // }
-
 
 // const age = 18;
 
@@ -204,7 +189,6 @@ console.log(typeof null)
 // if(age == 18) console.log('You just became an adult');
 
 // const favourite = Number(prompt("whats your favorite number?"));
-
 
 // console.log(favourite);
 // console.log(typeof favourite);
@@ -216,7 +200,6 @@ console.log(typeof null)
 // } else {
 //     console.log('Niste pogodili broj')
 // }
-
 
 // if(favourite !== 23){
 //     console.log('why not 23?')
@@ -230,7 +213,6 @@ console.log(typeof null)
 // console.log(hasDriversLicence || hasGoodVision);
 
 // console.log(!hasDriversLicence);
-
 
 // if(hasDriversLicence && hasGoodVision) {
 //     console.log('Sarah is able to drive');
@@ -247,8 +229,6 @@ console.log(typeof null)
 // } else {
 //     console.log('Someone else should drive');
 // }
-
-
 
 //-----------------------------------------------
 
@@ -271,7 +251,6 @@ console.log(typeof null)
 // let resultDolphins = (97 + 112 + 101) / 3;
 
 // let resultKoalas = (109 + 95 + 123) / 3;
-
 
 // if(resultDolphins === resultKoalas) {
 //     console.log("Dolphins and Koalas have a draw result.");
@@ -297,10 +276,7 @@ console.log(typeof null)
 //     console.log("Koalas wins Dolphins with over 100 points");
 // }
 
-
-//-----------------------------------------------  
-
-
+//-----------------------------------------------
 
 // const age = 23;
 
@@ -309,7 +285,6 @@ console.log(typeof null)
 // const drink = age >= 18 ? "coca cola" : "water";
 
 // console.log(drink);
-
 
 // let drink2;
 
@@ -321,21 +296,17 @@ console.log(typeof null)
 
 // console.log(drink2);
 
-
 // console.log(`I like to drink ${age >= 18 ? "coca cola" : "water"}`)
-
-
 
 //-------------------------------------------
 
 //ternary javascript challenge
+//test
 
 // const bill = 40;
 // const tip = bill <= 300 && bill >= 50 ? bill * 0.15 : bill * 0.2;
 
 // console.log(`The bill was ${bill}, the tip was ${tip}, and total value ${bill + tip}`);
-
-
 
 // const name = "jonas";
 
@@ -352,4 +323,3 @@ console.log(typeof null)
 // }
 
 // const x = first();
-
