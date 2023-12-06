@@ -331,62 +331,100 @@ btnSort.addEventListener('click', function (e) {
 // console.log(+(2.345).toFixed(2));
 
 //Remainder operator - ostatak
-console.log(5 % 2);
-console.log(5 / 2); // 5 = 2 * 2 + 1
+// console.log(5 % 2);
+// console.log(5 / 2); // 5 = 2 * 2 + 1
 
-console.log(8 % 3);
-console.log(8 / 3); // 8 = 2 * 3 + 2
+// console.log(8 % 3);
+// console.log(8 / 3); // 8 = 2 * 3 + 2
 
-console.log(7 % 2);
-console.log(7 / 2);
+// console.log(7 % 2);
+// console.log(7 / 2);
 
-const isEven = n => n % 2 === 0;
-console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(514));
+// const isEven = n => n % 2 === 0;
+// console.log(isEven(8));
+// console.log(isEven(23));
+// console.log(isEven(514));
 
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    // 0, 2, 4, 6
-    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
-    // 0, 3, 6, 9
-    if (i % 3 === 0) row.style.backgroundColor = 'blue';
-  });
-});
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     // 0, 2, 4, 6
+//     if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+//     // 0, 3, 6, 9
+//     if (i % 3 === 0) row.style.backgroundColor = 'blue';
+//   });
+// });
 
 //BigInt
 
 // the biggest number that JS can safely represent
-console.log(2 ** 53 - 1);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(2 ** 53 + 1);
-console.log(2 ** 53 - 2);
-console.log(2 ** 53 - 3);
-console.log(2 ** 53 - 4);
+// console.log(2 ** 53 - 1);
+// console.log(Number.MAX_SAFE_INTEGER);
+// console.log(2 ** 53 + 1);
+// console.log(2 ** 53 - 2);
+// console.log(2 ** 53 - 3);
+// console.log(2 ** 53 - 4);
 
 // n transform regular number to BigInt
-console.log(12312313123123123123142345234242n);
-console.log(BigInt(123123131));
+// console.log(12312313123123123123142345234242n);
+// console.log(BigInt(123123131));
 
 // Operations
-console.log(10000n + 10000n);
-console.log(131313131312312313131313131313n * 1000000n);
+// console.log(10000n + 10000n);
+// console.log(131313131312312313131313131313n * 1000000n);
+//
 // console.log(Math.sqrt(16n)); doesn't work
 
-const huge = 3123123131231241241n;
-const num = 23;
-console.log(huge * BigInt(num));
+// const huge = 3123123131231241241n;
+// const num = 23;
+// console.log(huge * BigInt(num));
 
 // Exceptions
-console.log(20n > 15);
-console.log(20n === 20);
-console.log(typeof 20n);
-console.log(20n == '20');
+// console.log(20n > 15);
+// console.log(20n === 20);
+// console.log(typeof 20n);
+// console.log(20n == '20');
 
-console.log(huge + ' is REALLY BIG');
+// console.log(huge + ' is REALLY BIG');
 
 //Divisions
-console.log(11n / 3n);
-console.log(10 / 3);
+// console.log(11n / 3n);
+// console.log(10 / 3);
 
 //007
+
+//Create a date
+/*
+const now = new Date();
+console.log(now);
+
+console.log(new Date('Dec 06 2023 20:09:00'));
+console.log(new Date('Decembar 24, 2015'));
+console.log(new Date(account1.movementsDates[0]));
+
+console.log(new Date(2037, 10, 19, 15, 23, 5));
+// month is based 0-11
+console.log(new Date(2037, 10, 31));
+
+console.log(new Date(0));
+console.log(new Date(3 * 24 * 60 * 60 * 1000));
+*/
+
+//Work with dates
+const future = new Date(2037, 10, 19, 15, 23, 5);
+console.log(future);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay()); //day of the week!!!
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+console.log(new Date(2142253385000));
+
+console.log(Date.now());
+
+future.setFullYear(2040);
+console.log(future);
