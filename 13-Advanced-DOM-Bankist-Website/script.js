@@ -138,6 +138,16 @@ nav.addEventListener('mouseover', handlerHover.bind(0.5));
 
 nav.addEventListener('mouseout', handlerHover.bind(1));
 
+//Sticky navigation
+const initialCooards = section1.getBoundingClientRect();
+// console.log(initialCooards);
+
+window.addEventListener('scroll', function () {
+  // console.log(window.scrollY);
+
+  if (window.scrollY > initialCooards.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //  Selecting elements
