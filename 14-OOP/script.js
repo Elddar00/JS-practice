@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 const Person = function (firstName, birthYear) {
   // Instance properties
   this.firstName = firstName;
@@ -78,6 +78,7 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
+*/
 
 /*
 //CHALLENGE #1
@@ -189,7 +190,7 @@ console.log(account.latest);
 account.latest = 50;
 console.log(account.movements);
 */
-
+/*
 const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -212,9 +213,9 @@ console.log(steven.__proto__ === PersonProto);
 const sara = Object.create(PersonProto);
 sara.init('Sara', 1980);
 sara.calcAge();
-
+*/
 //Challenge #2
-
+/*
 class CarCl {
   constructor(make, speed) {
     this.make = make;
@@ -247,3 +248,42 @@ ford.accelerate();
 ford.brake();
 ford.speedUS = 50;
 console.log(ford);
+*/
+
+// Inheritance Between "Classes": Constructor Functions
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and i study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
