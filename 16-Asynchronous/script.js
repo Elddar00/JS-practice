@@ -6,21 +6,21 @@ const countriesContainer = document.querySelector('.countries');
 const renderCountry = function (data, className = '') {
   const html = `
     <article class="country ${className}">
-        <img class="country__img" src="${data.flag}" />
+        <img class="country__img" src="${data.flags.png}" />
         <div class="country__data">
-         <h3 class="country__name">${data.name}</h3>
+         <h3 class="country__name">${data.name.common}</h3>
          <h4 class="country__region">${data.region}</h4>
          <p class="country__row"><span>👫</span>${(
            +data.population / 1000000
          ).toFixed(1)} people</p>
-         <p class="country__row"><span>🗣️</span>${data.languages}</p>
-         <p class="country__row"><span>💰</span>${data.currencies}</p>
+         <p class="country__row"><span>🗣️</span>${data.languages.deu}</p>
+         <p class="country__row"><span>💰</span>${data.currencies.EUR.name}</p>
         </div>
     </article>
   `;
   console.log(data);
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
@@ -93,6 +93,8 @@ setTimeout(() => {
 //     });
 // };
 
+/*
+
 const getJSON = function (url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
@@ -100,6 +102,8 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
     return response.json();
   });
 };
+
+*/
 
 // const getCountryData = function (country) {
 //   //Country 1
@@ -139,6 +143,8 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //     });
 // };
 
+/*
+
 const getCountryData = function (country) {
   //Country 1
   getJSON(`https://restcountries.com/v3.1/name/${country}`, 'Country not found')
@@ -171,3 +177,32 @@ btn.addEventListener('click', function () {
 });
 
 getCountryData('australia');
+
+*/
+
+const whereAmI = function (lat, lng) {
+  fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=835944364880026506160x71607 `
+  )
+    .then(res => {
+      if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+      return res.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.error(`${err.message} 💥`));
+};
+
+whereAmI(52.508, 13.381);
+// whereAmI(19.037, 72.873);
+// whereAmI(-33.933, 18.474);
