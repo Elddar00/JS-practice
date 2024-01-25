@@ -13,7 +13,7 @@ const renderCountry = function (data, className = '') {
          <p class="country__row"><span>👫</span>${(
            +data.population / 1000000
          ).toFixed(1)} people</p>
-         <p class="country__row"><span>🗣️</span>${data.languages.deu}</p>
+         <p class="country__row"><span>🗣️</span>${data.languages.por}</p>
          <p class="country__row"><span>💰</span>${data.currencies.EUR.name}</p>
         </div>
     </article>
@@ -326,6 +326,8 @@ btn.addEventListener('click', whereAmI);
 
 */
 
+/*
+
 // Challenge #2
 
 const wait = function (seconds) {
@@ -372,3 +374,35 @@ createImage('img/img-1.jpg')
     currentImg.style.display = 'none';
   })
   .catch(err => console.error(err));
+
+  */
+
+// fetch(`https://restcountries.com/v3.1/name/${country}`).then(res => console.log(res))
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function (country) {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=835944364880026506160x71607 `
+  );
+  const dataGeo = await resGeo.json();
+  console.log(dataGeo);
+
+  //Country data
+
+  const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+
+whereAmI('portugal');
