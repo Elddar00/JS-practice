@@ -1,4 +1,3 @@
-/*
 // Importing module
 // import { addToCart, totalPrice as price, tq } from './shoppingCart.js';
 // addToCart('bread', 5);
@@ -20,8 +19,6 @@ add('bread', 5);
 add('apples', 4);
 
 console.log(cart);
-
-*/
 
 /*
 const ShoppingCart2 = (function () {
@@ -72,7 +69,9 @@ const {addToCart} = require('./shoppingCart.js');
 
 */
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -89,3 +88,7 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
