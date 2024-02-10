@@ -631,14 +631,15 @@ const controlPagination = function(goToPage) {
     // 2) Render NEW pagination buttons
     (0, _paginationViewDefault.default).render(_modelJs.state.search);
 };
-const controlServings = function() {
+const controlServings = function(newServings) {
     // Update the recipe servings (in state)
-    _modelJs.updateServings(4);
+    _modelJs.updateServings(newServings);
     // Update the recipe view
     (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
 };
 const init = function() {
     (0, _recipeViewJsDefault.default).addHandelerRender(controlRecipes);
+    (0, _recipeViewJsDefault.default).addHandlerUpdateServings(controlServings);
     (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
     (0, _paginationViewDefault.default).addHandlerClick(controlPagination);
 };
@@ -2621,43 +2622,52 @@ class RecipeView extends (0, _viewJsDefault.default) {
             "load"
         ].forEach((ev)=>window.addEventListener(ev, handler));
     }
+    addHandlerUpdateServings(handler) {
+        this._parentElement.addEventListener("click", function(e) {
+            const btn = e.target.closest(".btn--update-servings");
+            if (!btn) return;
+            console.log(btn);
+            const { updateTo } = btn.dataset;
+            if (+updateTo > 0) handler(+updateTo);
+        });
+    }
     _generateMarkup() {
         return `
-        <figure class="recipe__fig">
-              <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
-              <h1 class="recipe__title">
-                <span>${this._data.title}</span>
-              </h1>
-            </figure>
+      <figure class="recipe__fig">
+        <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
+        <h1 class="recipe__title">
+          <span>${this._data.title}</span>
+        </h1>
+      </figure>
 
-            <div class="recipe__details">
-              <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                  <use href="${0, _iconsSvgDefault.default}#icon-clock"></use>
-                </svg>
-                <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>
-                <span class="recipe__info-text">minutes</span>
-              </div>
-              <div class="recipe__info">
-                <svg class="recipe__info-icon">
-                  <use href="${0, _iconsSvgDefault.default}#icon-users"></use>
-                </svg>
-                <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
-                <span class="recipe__info-text">servings</span>
+      <div class="recipe__details">
+        <div class="recipe__info">
+          <svg class="recipe__info-icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-clock"></use>
+          </svg>
+          <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookingTime}</span>
+          <span class="recipe__info-text">minutes</span>
+        </div>
+        <div class="recipe__info">
+          <svg class="recipe__info-icon">
+            <use href="${0, _iconsSvgDefault.default}#icon-users"></use>
+          </svg>
+          <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
+          <span class="recipe__info-text">servings</span>
 
-                <div class="recipe__info-buttons">
-                  <button class="btn--tiny btn--increase-servings">
-                    <svg>
-                      <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
-                    </svg>
-                  </button>
-                  <button class="btn--tiny btn--increase-servings">
-                    <svg>
-                      <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
-                    </svg>
-                  </button>
-                </div>
-              </div>
+          <div class="recipe__info-buttons">
+            <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings - 1}">
+              <svg>
+                <use href="${0, _iconsSvgDefault.default}#icon-minus-circle"></use>
+              </svg>
+            </button>
+            <button class="btn--tiny btn--update-servings" data-update-to="${this._data.servings + 1}">
+              <svg>
+                <use href="${0, _iconsSvgDefault.default}#icon-plus-circle"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
 
               <div class="recipe__user-generated">
               </div>
